@@ -135,6 +135,7 @@
 # # Allow WhiteNoise to serve compressed files
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+from env import load_env
 
 
 
