@@ -12,18 +12,19 @@ SECRET_KEY = 'django-insecure-aeb3w3m^-#o1)qb45ypkg$r5zgm$nz!63okw#-95$4=)pywowj
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True  #default is True i can change that it is False because of hosting
+DEBUG = False  #default is True i can change that it is False because of hosting
 
 # if u can false the debug is can't allowed static files
 
 ALLOWED_HOSTS = ['*']
 
 import os
+import django_heroku
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static")
 ]
-
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 # Application definition
 
@@ -128,4 +129,4 @@ LOGIN_REDIRECT_URL = '/home/'  # Redirect after successful login
 LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
 
 
-# settings.py
+django_heroku.settings(locals())
