@@ -130,3 +130,18 @@ LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
 
 
 django_heroku.settings(locals())
+if 'RENDER' in os.environ:  # or check a custom env var
+    import django_heroku
+    django_heroku.settings(locals())
+
+
+import dj_database_url
+import os
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',  # fallback to local sqlite
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
