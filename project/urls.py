@@ -15,5 +15,3 @@ urlpatterns = [
 ]
 
 handler404 = 'myapp.views.custom_404_view'
-handler500 = 'myapp.views.custom_500_view'
-
