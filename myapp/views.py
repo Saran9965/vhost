@@ -4,11 +4,21 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import empdata
-
+from django.http import HttpResponseNotFound
 
 @login_required(login_url='login')
 def HomePage(request):
     return render(request, 'home.html')
+
+def custom_404_view(request, exception):
+    return render(request, 'errors/404.html', status=404)
+
+def custom_500_view(request):
+    return render(request, 'errors/500.html', status=500)
+
+
+def block_view(request):
+    return HttpResponseNotFound("This page is blocked.")
 
 def signup(request):
     if request.method == 'POST':
