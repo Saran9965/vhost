@@ -128,11 +128,14 @@ LOGIN_URL = '/login/'  # This ensures Django redirects to your actual login page
 LOGIN_REDIRECT_URL = '/home/'  # Redirect after successful login
 LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
 
+import os
 
-django_heroku.settings(locals())
-if 'RENDER' in os.environ:  # or check a custom env var
-    import django_heroku
-    django_heroku.settings(locals())
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 👈 for collectstatic
+
+# Allow WhiteNoise to serve compressed files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 import dj_database_url
