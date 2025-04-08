@@ -135,21 +135,21 @@
 # # Allow WhiteNoise to serve compressed files
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-from env import load_env
+
+
+
+
+
 
 
 
 from pathlib import Path
 import os
 
-import os
-from env import load_env
-load_env()
-
 SECRET_KEY = os.getenv("SECRET_KEY", "insecure-key")  # fallback for dev
 DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1','https://newonevconnect.onrender.com']
 
 
 # Build paths
