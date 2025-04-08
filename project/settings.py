@@ -141,6 +141,16 @@
 from pathlib import Path
 import os
 
+import os
+from env import load_env
+load_env()
+
+SECRET_KEY = os.getenv("SECRET_KEY", "insecure-key")  # fallback for dev
+DEBUG = os.getenv("DEBUG", "True") == "True"
+
+ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+
+
 # Build paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -148,9 +158,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-aeb3w3m^-#o1)qb45ypkg$r5zgm$nz!63okw#-95$4=)pywowj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # Set to False in production
+# DEBUG = True  # Set to False in production
 
-ALLOWED_HOSTS = ['*']  # Use specific domains/IPs in production
+# ALLOWED_HOSTS = ['*']  # Use specific domains/IPs in production
 
 # Application definition
 INSTALLED_APPS = [
