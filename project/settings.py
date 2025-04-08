@@ -19,7 +19,6 @@ DEBUG = True  #default is True i can change that it is False because of hosting
 ALLOWED_HOSTS = ['*']
 
 import os
-import django_heroku
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
@@ -137,16 +136,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # 👈 for collectstatic
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
-
-import dj_database_url
-import os
-
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',  # fallback to local sqlite
-        conn_max_age=600,
-        ssl_require=True
-    )
-}
 
 
